@@ -10,9 +10,9 @@ import org.springframework.ui.ModelMap;
 public class HelloController{
  
    @RequestMapping(method = RequestMethod.GET)
-   public String printHello(ModelMap model) {
+   public String printHello(String user, ModelMap model) {
       model.addAttribute("message", "Hello Spring MVC Framework!");
-
+      model.addAttribute("Name", user);
       return "hello";
    }
 
