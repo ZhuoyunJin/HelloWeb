@@ -4,7 +4,7 @@
 <title>Hello World</title>
 </head>
 <body>
-   <h2>${message}</h2>
+   <h2>${Sex}</h2>
    <h3>${Name}</h3>
 </body>
 </html>
