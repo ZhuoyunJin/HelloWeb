@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,6 +42,12 @@ public class PetController {
 	@RequestMapping(path="/")
 	public String handle(@ModelAttribute("test") String test) {
 		System.out.println(test);
+		return "hello";
+	}
+	
+	@RequestMapping(path="/cookie")
+	public String cookie(@CookieValue("JSESSIONID") String cookie){
+		System.out.println(cookie);
 		return "hello";
 	}
 }
