@@ -6,6 +6,9 @@ import java.io.Writer;
 import java.util.Date;
 import java.util.Map;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.http.HttpEntity;
@@ -29,7 +32,11 @@ import org.springframework.validation.BindingResult;
 @Controller
 @RequestMapping("/hello")
 public class HelloController{
-
+//	@Autowired
+//    private UserDAOImpl test;
+	@Autowired
+	private DataSource dataSource;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String printHello(String user, ModelMap model) {
 		model.addAttribute("message", "Hello Spring MVC Framework!");
@@ -45,6 +52,15 @@ public class HelloController{
 		model.addAttribute("Name", client.getName());
 		model.addAttribute("Sex",client.getSex());
 		return "hello";
+	}
+	
+	@RequestMapping(path="/user/{userId}")
+	public String getUser(@PathVariable String userId, ModelMap model){
+		UserDAOImpl test = new UserDAOImpl(dataSource);
+		User user = test.get(userId);
+		model.put("id", user.getUserId());
+		model.put("Name", user.getName());
+		return "user";
 	}
 
 	@RequestMapping(path = "/date/{day}", method = RequestMethod.GET)
@@ -89,10 +105,10 @@ public class HelloController{
 		return "hello";
 	}
 
-	@ModelAttribute
-	public User populateModel(@PathVariable String user) {
-		System.out.println("populateModel--"+user);
-		User client = new User(user);
-		return client;
-	}
+//	@ModelAttribute
+//	public User populateModel(@PathVariable String user) {
+//		System.out.println("populateModel--"+user);
+//		User client = new User(user);
+//		return client;
+//	}
 }

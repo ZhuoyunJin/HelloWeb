@@ -1,9 +1,25 @@
 package greeting;
 
 public class User {
+	private String userId;
 	private String name;
 	private int age;
 	private char sex;
+	
+	public User(){}
+	
+	public User(String id, String name){
+		this.userId = id;
+		this.name = name;
+	}
+	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public User(String name){
 		this.name = name;

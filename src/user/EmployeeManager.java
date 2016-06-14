@@ -1,8 +1,8 @@
-package Employment;
+package user;
 
 import java.util.List;
 
-public interface EmployeeDAO
+public interface EmployeeManager
 {
     public List<EmployeeVO> getAllEmployees();
 }
