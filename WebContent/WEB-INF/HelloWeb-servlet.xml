@@ -12,7 +12,8 @@
 	<mvc:annotation-driven />
 	
 	<context:component-scan base-package="greeting" />
-	<context:component-scan base-package="Employment" />
+	<context:component-scan base-package="user" />
+	<context:component-scan base-package="admin" />
 	<context:property-placeholder location="/WEB-INF/jdbc.properties" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

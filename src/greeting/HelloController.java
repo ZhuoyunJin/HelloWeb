@@ -41,7 +41,7 @@ public class HelloController{
 	public String printHello(String user, ModelMap model) {
 		model.addAttribute("message", "Hello Spring MVC Framework!");
 		model.addAttribute("Name", user);
-		return "hello";
+		return "index";
 	}
 
 	@RequestMapping(path = "/user/{user}/{sex}", method = RequestMethod.GET)
@@ -58,6 +58,10 @@ public class HelloController{
 	public String getUser(@PathVariable String userId, ModelMap model){
 		UserDAOImpl test = new UserDAOImpl(dataSource);
 		User user = test.get(userId);
+		if(user==null){
+			model.put("ErrorMessage", "User not found.");
+			return "error";
+		}
 		model.put("id", user.getUserId());
 		model.put("Name", user.getName());
 		return "user";

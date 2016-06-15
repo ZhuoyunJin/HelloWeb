@@ -53,4 +53,23 @@ public class UserDAOImpl implements UserDAO{
      
         });
     }
+    
+    public User get(String username, String password){
+    	String sql = "SELECT * FROM m_user_log l INNER JOIN m_user_security s on l.user_id = s.user_id "
+    			+ "WHERE s.phone = '" + username +"' AND l.pwd='"+password+"'"; 
+    	return jdbcTemplate.query(sql, new ResultSetExtractor<User>() {
+            @Override
+            public User extractData(ResultSet rs) throws SQLException,
+                    DataAccessException {
+                if (rs.next()) {
+                    User user = new User();
+                    user.setUserId(rs.getString("user_id"));
+                    user.setName(rs.getString("login_id"));
+                    return user;
+                }
+                return null;
+            }
+     
+        });
+    }
 }
