@@ -10,5 +10,6 @@
 <body>
 	<h1>Title : ${title}</h1>
 	<h1>Message : ${message}</h1>
+	<h3>Token: <%=(String)session.getAttribute("xxx-token") %></h3>
 </body>
 </html>
