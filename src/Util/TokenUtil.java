@@ -10,20 +10,23 @@ import java.util.TreeMap;
 import java.util.UUID;
 
 import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 
 public class TokenUtil {
 	private static final String app_security="2acabf04914eeaec6b841a81f09711d8";
 	private static final String app_key="c2169bcb-e439-11e5-bbcc-a0d3c1ef5680";
-
-	public static String getToken(String user_id, DataSource dataSource){
+	@Autowired
+	public static String getToken(String user_id, JdbcTemplate jdbcTemplate){
 		String token = "";
 		String nowTime = ""+System.currentTimeMillis();
 		String expireTime = ""+(System.currentTimeMillis()+30*60*1000);
-
 		try {
-			JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+//			JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 			String sql = "SELECT * FROM m_user_author WHERE user_id='" + user_id +"'";
 			List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
 

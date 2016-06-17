@@ -17,6 +17,10 @@ public class UserDAOImpl implements UserDAO{
     public UserDAOImpl(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
+    
+    public UserDAOImpl(JdbcTemplate jdbcTemplate) {
+    	this.jdbcTemplate = jdbcTemplate;
+    }
  
     @Override
     public void saveOrUpdate(User contact) {
