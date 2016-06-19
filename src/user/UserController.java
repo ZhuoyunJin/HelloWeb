@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ public class UserController {
 	private JdbcTemplate jdbcTemplate;
 	@Autowired
 	private JdbcTemplate bussTemplate;
+	@Resource
+	private Map<String, String> mapInstance;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String index() {
@@ -71,6 +74,13 @@ public class UserController {
 		if(list.size()<1) return "index";
 		model.addAttribute("sms_tmpl", list);
 		return "balance";
+	}
+	
+	@RequestMapping(path="getMap")
+	public String test(){
+		
+		System.out.println(mapInstance);
+		return "hello";
 	}
 }
 
