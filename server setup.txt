@@ -1,0 +1,67 @@
+1.install jdk
+Download latest jdk(tar.gz version) online.
+Upload to the server using scp command.
+ scp -i /d/sam.pem HelloWeb.war ubuntu@52.38.183.106:/home/ubuntu
+Decompress it with tar -zxvf.
+Move it to /usr/local/jdk, or similar location as you like.
+Set environment variables by adding one line in "/etc/profile":
+export PATH=/usr/local/jdk/jdk1.8.0_92/bin:$PATH
+Try type "java -version"
+
+2.install tomcat
+Download tomcat and decompress it.
+Move it to /opt or similar location as you like.
+Set enviroment variables:
+sudo vi /opt/apache-tomcat-8.0.36/bin/startup.sh
+Add lines:
+JAVA_HOME=/usr/local/jdk/jdk1.8.0_92  
+PATH=$JAVA_HOME/bin:$PATH  
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar  
+TOMCAT_HOME=/opt/apache-tomcat-8.0.36
+Add the same thing to /opt/apache-tomcat-8.0.36/bin/shutdown.sh
+Start tomcat by "sudo ./bin/startup.sh".
+Shutdown tomcat by "sudo ./bin/shutdown.sh".
+
+3.install your application
+Upload your war file to webapps folder under tomcat directory.
+Edit server.html:
+Change port from 8080 to 80.
+<Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+Inside the <Host> tag, add a <Context> tag for your application.
+<Context docBase="HelloWeb.war" path="" />
+Remove the default ROOT application, or at least move it out of the way:
+mv webapps/ROOT webapps/xROOT
+
+All set.
+Now you can visit your application online.
+
+4.install nginx
+sudo apt-get update
+sudo apt-get install nginx
+Nginx is installed under /etc/nginx
+Update nginx.conf.
+ server {
+        listen       9080;
+        server_name  localhost:8080;
+
+        location / {
+            #root   html;
+            #index  index.html index.htm;
+            proxy_pass http://localhost:8080;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+Use "nginx -t" to check the syntax.
+Use "nginx -s reload" to effect the config file.
+Use the following command to start/stop Nginx service:
+"service nginx start"
+"service nginx stop"
+"service nginx restart"
+
+http://cxshun.iteye.com/blog/1535188
