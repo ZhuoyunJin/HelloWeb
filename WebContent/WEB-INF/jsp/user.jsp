@@ -11,5 +11,7 @@
 	<h3>${Name}</h3>
 	<h3><%=(String)session.getAttribute("xxx-token") %></h3>
 	<a href="balance">balance</a>
+	First Name<input type="text" name="First Name"><br/>
+	Last Name<input type="text" name="Last Name"><br/>
 </body>
 </html>
