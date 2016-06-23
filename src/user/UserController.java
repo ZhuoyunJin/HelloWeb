@@ -69,10 +69,10 @@ public class UserController {
 		if(list.size()<1) return "index";
 		model.addAttribute("balance", list.get(0).get("money"));
 		
-		sql = "select * from sms_tmpl";
-		list = bussTemplate.queryForList(sql);
-		if(list.size()<1) return "index";
-		model.addAttribute("sms_tmpl", list);
+//		sql = "select * from sms_tmpl";
+//		list = bussTemplate.queryForList(sql);
+//		if(list.size()<1) return "index";
+//		model.addAttribute("sms_tmpl", list);
 		return "balance";
 	}
 	

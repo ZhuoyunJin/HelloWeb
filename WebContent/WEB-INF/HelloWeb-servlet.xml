@@ -14,6 +14,7 @@
 	<context:component-scan base-package="greeting" />
 	<context:component-scan base-package="user" />
 	<context:component-scan base-package="admin" />
+	<context:component-scan base-package="common" />
 	<context:property-placeholder location="/WEB-INF/jdbc.properties" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -36,6 +37,14 @@
 		<property name="username" value="${buss.username}" />
 		<property name="password" value="${buss.password}" />
 	</bean>
+	
+	<bean id="awsSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://52.38.183.106:3306/demo" />
+		<property name="username" value="joyin" />
+		<property name="password" value="joyin" />
+	</bean>
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
@@ -43,6 +52,10 @@
 
 	<bean id="bussTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="bussSource" />
+	</bean>
+	
+	<bean id="awsTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="awsSource" />
 	</bean>
 
 	<bean id="mapFactory" class="Util.MapFactory">

@@ -5,11 +5,12 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Joyin's Barbershop -- demo</title>
 </head>
 <body>
-	<h1>Title : ${title}</h1>
-	<h1>Message : ${message}</h1>
+	<h1>Welcome to Joyin's barbershop<h1>
+	<a href="login">login</a>
+	<a href="allTech">Find a barber</a>
 	<h3>Token: <%=(String)session.getAttribute("xxx-token") %></h3>
 </body>
 </html>

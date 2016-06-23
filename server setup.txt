@@ -65,3 +65,15 @@ Use the following command to start/stop Nginx service:
 "service nginx restart"
 
 http://cxshun.iteye.com/blog/1535188
+
+5.Remotely visit mysql
+Login mysql on server: mysql -u root -p
+Create a user: CREATE USER joyin@'%' IDENTIFIED BY 'password';
+Grant privileges: grant all privileges on *.* to joe@198.168.0.1 identified by 'password';
+flush privileges;
+Modify /etc/mysql/my.cnf: comment the line: bind-address:127.0.0.1
+Restart mysql: /etc/init.d/mysql stop/start
+
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON 
+数据库名.* TO 数据库名@localhost IDENTIFIED BY '密码';
+FOR '数据库名'@'localhost' = OLD_PASSWORD('密码');
