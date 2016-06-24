@@ -10,5 +10,7 @@ public interface TechDAO {
 	public Technician get(String userId);
 
 	public List<Technician> list();
+	
+	public Technician test(String id);
 }
 

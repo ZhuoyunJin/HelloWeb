@@ -8,13 +8,9 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.BeanUtils;
-import org.springframework.dao.DataAccessException;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
-
-import greeting.User;
 
 public class TechDAOImpl implements TechDAO{
 	private JdbcTemplate awsTemplate;
@@ -39,6 +35,7 @@ public class TechDAOImpl implements TechDAO{
 	}
 
 	@Override
+	@Cacheable(value="tech",key="#id")
 	public Technician get(String id) {
 		String sql = "SELECT * FROM Employee WHERE id='" + id+"'";
 		System.out.println(sql);
@@ -54,9 +51,11 @@ public class TechDAOImpl implements TechDAO{
         });
 	}
 	
+	@Cacheable(value="techs")
 	public List<Technician> get() {
 		List<Technician> technicians = new ArrayList<Technician>();
 		String sql = "SELECT * FROM Employee";
+		System.out.println("kiiiiiiii");
 		List<Map<String, Object>> list=awsTemplate.queryForList(sql);
         for(Map<String, Object> map:list){           
         	Technician technician=new Technician();
@@ -70,6 +69,13 @@ public class TechDAOImpl implements TechDAO{
 	@Override
 	public List<Technician> list() {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	@Cacheable(value="tech",key="#id")
+	public Technician test(String id){
+		System.out.println("inside");
 		return null;
 	}
 
