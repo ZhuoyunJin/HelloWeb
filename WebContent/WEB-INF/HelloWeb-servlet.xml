@@ -60,6 +60,9 @@
 	<bean id="techDAOImpl" class="common.TechDAOImpl">
 		<constructor-arg ref="awsTemplate"/> 
 	</bean>
+	<bean id="LovDAOImpl" class="dao.LovDAOImpl">
+		<constructor-arg ref="awsTemplate"/> 
+	</bean>
 	<bean id="awsTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="awsSource" />
 	</bean>

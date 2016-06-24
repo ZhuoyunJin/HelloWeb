@@ -1,6 +1,8 @@
 package admin;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,5 +52,12 @@ public class AdminController {
 		return model;
 
 	}
+	
+	@RequestMapping(value="/admin/{id}/addTech")
+	public String addTech(@PathVariable String id, ModelMap modelMap){
+		
+		return "addTech";
+	}
+	
 
 }
