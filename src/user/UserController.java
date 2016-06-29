@@ -2,7 +2,6 @@ package user;
 
 import javax.servlet.http.HttpSession;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -26,9 +25,7 @@ public class UserController {
 //	@Autowired
 //	private DataSource dataSource;
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
-	@Autowired
-	private JdbcTemplate bussTemplate;
+	private JdbcTemplate awsTemplate;
 	@Resource
 	private Map<String, String> mapInstance;
 	
@@ -41,39 +38,19 @@ public class UserController {
 	public String login(ModelMap model, HttpServletRequest request, HttpSession session) {
 		String name=request.getParameter("username");
 		String pwd=request.getParameter("password");
-		UserDAOImpl test = new UserDAOImpl(jdbcTemplate);
+		pwd = TokenUtil.MD5(pwd);
+		UserDAOImpl test = new UserDAOImpl(awsTemplate);
 		User user = test.get(name,pwd);
 		if(user==null){
 			model.put("ErrorMessage", "User not found.");
 			return "error";
 		}
-		String token = TokenUtil.getToken(user.getUserId(),jdbcTemplate);
+		String token = TokenUtil.getToken(user.getUserId(),awsTemplate);
 		System.out.println("token: "+ token);
 		model.put("id", user.getUserId());
 		model.put("Name", user.getName());
-//		model.addAttribute("xxx-token", token);
 		session.setAttribute(TOKEN_SESSION, token);
 		return "user";
-	}
-	
-	@RequestMapping(path="balance")
-	public String balance(ModelMap model, HttpServletRequest request, HttpSession session) {
-		String token = (String) session.getAttribute(TOKEN_SESSION);
-		CheckToken checkToken = new CheckToken(jdbcTemplate);
-		String user_id = checkToken.check(token);
-		if(user_id.isEmpty())
-			return "login";
-//		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		String sql = "select * from m_user_security where user_id = '" + user_id + "'";
-		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
-		if(list.size()<1) return "index";
-		model.addAttribute("balance", list.get(0).get("money"));
-		
-//		sql = "select * from sms_tmpl";
-//		list = bussTemplate.queryForList(sql);
-//		if(list.size()<1) return "index";
-//		model.addAttribute("sms_tmpl", list);
-		return "balance";
 	}
 	
 	@RequestMapping(path="getMap")

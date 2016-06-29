@@ -58,8 +58,10 @@
 					<td><input type='password' name='password' /></td>
 				</tr>
 				<tr>
-					<td colspan='2'><input name="submit" type="submit"
+					<td colspan='1'><input name="submit" type="submit"
 						value="submit" /></td>
+					<!-- <td colspan='1'><input name="register" type="submit"
+						value="register" /></td> -->
 				</tr>
 			</table>
 		</form>

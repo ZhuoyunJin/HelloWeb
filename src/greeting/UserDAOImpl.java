@@ -40,7 +40,7 @@ public class UserDAOImpl implements UserDAO{
  
     @Override
     public User get(String userId) {
-    	String sql = "SELECT * FROM m_user_log WHERE user_id='" + userId+"'";
+    	String sql = "SELECT * FROM User WHERE id='" + userId+"'";
         return jdbcTemplate.query(sql, new ResultSetExtractor<User>() {
      
             @Override
@@ -59,16 +59,15 @@ public class UserDAOImpl implements UserDAO{
     }
     
     public User get(String username, String password){
-    	String sql = "SELECT * FROM m_user_log l INNER JOIN m_user_security s on l.user_id = s.user_id "
-    			+ "WHERE s.phone = '" + username +"' AND l.pwd='"+password+"'"; 
+    	String sql = "SELECT * FROM User WHERE username='" + username +"' AND password='"+password+"'"; 
     	return jdbcTemplate.query(sql, new ResultSetExtractor<User>() {
             @Override
             public User extractData(ResultSet rs) throws SQLException,
                     DataAccessException {
                 if (rs.next()) {
                     User user = new User();
-                    user.setUserId(rs.getString("user_id"));
-                    user.setName(rs.getString("login_id"));
+                    user.setUserId(rs.getString("id"));
+                    user.setName(rs.getString("username"));
                     return user;
                 }
                 return null;

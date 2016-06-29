@@ -12,7 +12,7 @@
 	<!--  <h3><%=(String)session.getAttribute("xxx-token") %></h3>  -->
 	<!--  <a href="balance">balance</a>  -->
 	<a href="admin/${id}/addTech">Add a technician</a>
-	<a href="">Manage</a>
+	<a href="allTech">Manage</a>
 
 </body>
 </html>
