@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.sql.DataSource;
 
@@ -23,9 +24,11 @@ public class TechDAOImpl implements TechDAO{
     	this.awsTemplate = awsTemplate;
     }
 	@Override
-	public void saveOrUpdate(Technician user) {
-		// TODO Auto-generated method stub
-		
+	public void saveOrUpdate(Technician tech) {
+		String uuid = UUID.randomUUID().toString();
+		String sql = String.format("insert into Employee (id, first_name, last_name, title) "
+				+ "values ('%s','%s','%s','%s') ",uuid,tech.getFirstName(),tech.getLastName(),tech.getTitle());
+		awsTemplate.execute(sql);
 	}
 
 	@Override

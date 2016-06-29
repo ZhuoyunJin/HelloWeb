@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import common.TechDAOImpl;
 import common.Technician;
 import dao.LOV;
 import dao.LovDAOImpl;
@@ -23,6 +24,8 @@ import dao.LovDAOImpl;
 public class AdminController {
 	@Autowired
 	LovDAOImpl lovDAOImpl;
+	@Autowired
+	TechDAOImpl techDAOImpl;
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView welcomePage() {
 		ModelAndView model = new ModelAndView();
@@ -66,7 +69,8 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/{id}/addTech")
-	public String addTech(@PathVariable String id, ModelMap modelMap){
+	public ModelAndView addTech(@PathVariable String id, ModelMap modelMap){
+		ModelAndView mav = new ModelAndView("addTech");  
 		LOV lov = lovDAOImpl.getLOV("title");
 		System.out.println(lov.getValue());
 		List<String> lov_list = lov.getValue();
@@ -74,14 +78,16 @@ public class AdminController {
 		for(String lov_value: lov_list){
 			lov_map.put(lov_value, lov_value);
 		}
-		modelMap.addAttribute("lov", lov_map);
-		return "addTech";
+		mav.addObject("lov", lov_map);  
+		mav.addObject("xxx", new Technician());  
+		return mav;
 	}
 	
-	@RequestMapping(value="/submitTech")  
+	@RequestMapping(value="/admin/{id}/submitTech")  
     private ModelAndView submitTech(@ModelAttribute("xxx") Technician technician) {  
 		System.out.println("submit tech");
-		ModelAndView mav = new ModelAndView("xxx");
-        return mav;  
+		System.out.println(technician.getFirstName());
+		techDAOImpl.saveOrUpdate(technician);
+        return new ModelAndView("index","xxx",new Technician());  
     } 
 }
