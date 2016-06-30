@@ -109,6 +109,16 @@ public class HelloController{
 		return "hello";
 	}
 
+    @RequestMapping(value = "/page1", method = RequestMethod.GET)
+    public String goToPage1() {
+    	System.out.println("page1");
+        return "page1";
+    }
+ 
+    @RequestMapping(value = "/page2", method = RequestMethod.GET)
+    public String goToPage2(Model model) {
+        return "page2";
+    }
 //	@ModelAttribute
 //	public User populateModel(@PathVariable String user) {
 //		System.out.println("populateModel--"+user);
