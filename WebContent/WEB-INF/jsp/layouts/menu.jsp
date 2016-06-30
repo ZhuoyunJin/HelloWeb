@@ -11,6 +11,6 @@
 <div>
 <ul>
     <c:forEach var="i" items="${menu}">
-		<li><a href="${i.url}">${i.caption }</a></li>
+		<li><a href="${i.url}">${i.caption}</a></li>
  </c:forEach>
 </div>
