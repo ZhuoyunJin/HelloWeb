@@ -26,22 +26,6 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driverClassName}" />
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
-	</bean>
-
-	<bean id="bussSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="${buss.driverClassName}" />
-		<property name="url" value="${buss.url}" />
-		<property name="username" value="${buss.username}" />
-		<property name="password" value="${buss.password}" />
-	</bean>
-
 	<bean id="awsSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -50,13 +34,6 @@
 		<property name="password" value="joyin" />
 	</bean>
 
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-
-	<bean id="bussTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="bussSource" />
-	</bean>
 	<bean id="techDAOImpl" class="common.TechDAOImpl">
 		<constructor-arg ref="awsTemplate"/> 
 	</bean>

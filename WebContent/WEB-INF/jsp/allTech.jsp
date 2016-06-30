@@ -8,6 +8,7 @@
 <title>All techs</title>
 </head>
 <body>
+<jsp:include page="header.jsp" />
 We have 
 ${list.size()}
 technitians.

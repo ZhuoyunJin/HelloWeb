@@ -7,6 +7,7 @@
 </head>
  
 <body>
+<jsp:include page="header.jsp" />
     <h2>All Employees in System</h2>
  
     <table border="1">

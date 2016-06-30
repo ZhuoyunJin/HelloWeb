@@ -20,6 +20,7 @@
 </script>
 </head>
 <body>
+<jsp:include page="header.jsp" />
 	<form:form method="POST" commandName="xxx" action="submitTech">
 	First Name
 	<input type="text" name="firstName">

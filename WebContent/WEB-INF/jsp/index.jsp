@@ -8,6 +8,7 @@
 <title>Joyin's Barbershop -- demo</title>
 </head>
 <body>
+<jsp:include page="header.jsp" />
 	<h1>Welcome to Joyin's barbershop<h1>
 	<a href="login">login</a>
 	<a href="allTech">Find a barber</a>

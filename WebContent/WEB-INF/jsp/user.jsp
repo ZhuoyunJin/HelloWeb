@@ -7,6 +7,7 @@
 <title>User</title>
 </head>
 <body>
+<jsp:include page="header.jsp" />
 	<!--  <h2>${id}</h2>  -->
 	<h3>${Name}</h3>
 	<!--  <h3><%=(String)session.getAttribute("xxx-token") %></h3>  -->

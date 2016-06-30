@@ -22,8 +22,7 @@ import greeting.UserDAOImpl;
 @Controller
 public class UserController {
 	private static final String TOKEN_SESSION = "xxx-token";
-//	@Autowired
-//	private DataSource dataSource;
+
 	@Autowired
 	private JdbcTemplate awsTemplate;
 	@Resource
