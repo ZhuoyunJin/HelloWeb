@@ -1,4 +1,4 @@
-package admin;
+package info.joyindemo.controller;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import common.TechDAOImpl;
-import common.Technician;
-import dao.LOV;
-import dao.LovDAOImpl;
+import info.joyindemo.dao.LovDAOImpl;
+import info.joyindemo.dao.TechDAOImpl;
+import info.joyindemo.entity.LOV;
+import info.joyindemo.entity.Technician;
 
 @Controller
 public class AdminController {

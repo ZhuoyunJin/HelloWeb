@@ -1,6 +1,8 @@
-package common;
+package info.joyindemo.dao;
 
 import java.util.List;
+
+import info.joyindemo.entity.Technician;
 
 public interface TechDAO {
 	public void saveOrUpdate(Technician user);

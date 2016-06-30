@@ -1,5 +1,6 @@
-package dao;
+package info.joyindemo.dao;
 
+import info.joyindemo.entity.LOV;
 
 public interface LovDAO {
 	

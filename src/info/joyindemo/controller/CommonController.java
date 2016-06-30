@@ -1,4 +1,4 @@
-package common;
+package info.joyindemo.controller;
 
 import java.util.List;
 
@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import info.joyindemo.dao.TechDAOImpl;
+import info.joyindemo.entity.Technician;
 
 
 

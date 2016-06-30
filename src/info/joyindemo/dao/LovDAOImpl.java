@@ -1,4 +1,4 @@
-package dao;
+package info.joyindemo.dao;
 
 import java.util.List;
 import java.util.Map;
@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import info.joyindemo.entity.LOV;
 
 public class LovDAOImpl implements LovDAO{
 	private JdbcTemplate awsTemplate;

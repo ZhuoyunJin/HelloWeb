@@ -1,4 +1,4 @@
-package user;
+package info.joyindemo.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import Util.TokenUtil;
-import greeting.User;
-import greeting.UserDAOImpl;
+import info.joyindemo.dao.UserDAOImpl;
+import info.joyindemo.entity.User;
 
 @Controller
 public class UserController {

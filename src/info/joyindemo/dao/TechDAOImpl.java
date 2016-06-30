@@ -1,4 +1,4 @@
-package common;
+package info.joyindemo.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +12,8 @@ import javax.sql.DataSource;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+
+import info.joyindemo.entity.Technician;
 
 public class TechDAOImpl implements TechDAO{
 	private JdbcTemplate awsTemplate;

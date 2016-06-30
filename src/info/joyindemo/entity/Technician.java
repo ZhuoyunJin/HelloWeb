@@ -1,4 +1,4 @@
-package common;
+package info.joyindemo.entity;
 
 public class Technician{
 	private String firstName;

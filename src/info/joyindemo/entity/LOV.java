@@ -1,4 +1,4 @@
-package dao;
+package info.joyindemo.entity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package greeting;
+package info.joyindemo.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -8,6 +8,9 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.apache.tiles.Definition;
+import org.apache.tiles.access.TilesAccess;
+import org.apache.tiles.mgmt.MutableTilesContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -24,6 +27,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import info.joyindemo.dao.UserDAOImpl;
+import info.joyindemo.entity.User;
 
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -112,6 +118,7 @@ public class HelloController{
     @RequestMapping(value = "/page1", method = RequestMethod.GET)
     public String goToPage1() {
     	System.out.println("page1");
+   
         return "page1";
     }
  

@@ -15,10 +15,10 @@
 	<mvc:annotation-driven />
 	<cache:annotation-driven proxy-target-class="true" />
 
-	<context:component-scan base-package="greeting" />
-	<context:component-scan base-package="user" />
-	<context:component-scan base-package="admin" />
-	<context:component-scan base-package="common" />
+	<context:component-scan base-package="info.joyindemo.controller" />
+	<context:component-scan base-package="info.joyindemo.dao" />
+	<context:component-scan base-package="info.joyindemo.entity" />
+	
 	<context:property-placeholder location="/WEB-INF/jdbc.properties" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -34,10 +34,10 @@
 		<property name="password" value="joyin" />
 	</bean>
 
-	<bean id="techDAOImpl" class="common.TechDAOImpl">
+	<bean id="techDAOImpl" class="info.joyindemo.dao.TechDAOImpl">
 		<constructor-arg ref="awsTemplate"/> 
 	</bean>
-	<bean id="LovDAOImpl" class="dao.LovDAOImpl">
+	<bean id="LovDAOImpl" class="info.joyindemo.dao.LovDAOImpl">
 		<constructor-arg ref="awsTemplate"/> 
 	</bean>
 	<bean id="awsTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
@@ -66,6 +66,8 @@
 			<list>
 				<value>/WEB-INF/tiles.xml</value>
 			</list>
+		</property>
+		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SimpleSpringPreparerFactory">
 		</property>
 	</bean>
 </beans>

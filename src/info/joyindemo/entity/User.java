@@ -1,4 +1,4 @@
-package greeting;
+package info.joyindemo.entity;
 
 public class User {
 	private String userId;
