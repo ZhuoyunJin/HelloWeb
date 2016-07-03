@@ -46,7 +46,7 @@
 		<h2>Login with Username and Password</h2>
 
 		<form name='loginForm'
-			action="login" method='POST'>
+			action="user" method='POST'>
 
 			<table>
 				<tr>

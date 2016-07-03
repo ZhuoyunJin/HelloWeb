@@ -11,15 +11,10 @@
 	<%-- <jsp:include page="header.jsp" /> --%>
 	<tiles:insertDefinition name="defaultTemplate">
 		<tiles:putAttribute name="body">
-			<br>Now, we put some custom content, to override the original one.....
+		<h3>${Name}</h3>
 	</tiles:putAttribute>
 	</tiles:insertDefinition>
-	<!--  <h2>${id}</h2>  -->
-	<h3>${Name}</h3>
 	<!--  <h3><%=(String) session.getAttribute("xxx-token")%></h3>  -->
-	<!--  <a href="balance">balance</a>  -->
-	<a href="admin/${id}/addTech">Add a technician</a>
-	<a href="allTech">Manage</a>
-
+	<!--  <a href="admin/${id}/addTech">Add a technician</a> -->
 </body>
 </html>

@@ -68,8 +68,8 @@ public class AdminController {
 
 	}
 	
-	@RequestMapping(value="/admin/{id}/addTech")
-	public ModelAndView addTech(@PathVariable String id, ModelMap modelMap){
+	@RequestMapping(value="/admin/addTech")
+	public ModelAndView addTech(ModelMap modelMap){
 		ModelAndView mav = new ModelAndView("addTech");  
 		LOV lov = lovDAOImpl.getLOV("title");
 		System.out.println(lov.getValue());
@@ -83,7 +83,7 @@ public class AdminController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/admin/{id}/submitTech")  
+	@RequestMapping(value="/admin/submitTech")  
     private ModelAndView submitTech(@ModelAttribute("xxx") Technician technician) {  
 		System.out.println("submit tech");
 		System.out.println(technician.getFirstName());

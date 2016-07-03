@@ -33,7 +33,7 @@ public class UserController {
 		return "index";
 	}
 	
-	@RequestMapping(path="login")
+	@RequestMapping(path="user")
 	public String login(ModelMap model, HttpServletRequest request, HttpSession session) {
 		String name=request.getParameter("username");
 		String pwd=request.getParameter("password");
