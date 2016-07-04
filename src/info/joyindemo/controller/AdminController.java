@@ -1,9 +1,10 @@
 package info.joyindemo.controller;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import Util.Constants;
 import info.joyindemo.dao.LovDAOImpl;
 import info.joyindemo.dao.TechDAOImpl;
 import info.joyindemo.entity.LOV;
@@ -26,15 +28,7 @@ public class AdminController {
 	LovDAOImpl lovDAOImpl;
 	@Autowired
 	TechDAOImpl techDAOImpl;
-	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-	public ModelAndView welcomePage() {
-		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Custom Login Form");
-		model.addObject("message", "This is welcome page!");
-		model.setViewName("index");
-		return model;
 
-	}
 
 	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
 	public ModelAndView adminPage() {
@@ -43,9 +37,7 @@ public class AdminController {
 		model.addObject("title", "Spring Security Custom Login Form");
 		model.addObject("message", "This is protected page!");
 		model.setViewName("admin");
-
 		return model;
-
 	}
 
 	//Spring Security see this :
@@ -66,6 +58,15 @@ public class AdminController {
 
 		return model;
 
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(HttpSession session) {
+		session.removeAttribute(Constants.TOKEN_SESSION);
+		ModelAndView model = new ModelAndView();
+		model.addObject("msg", "You've been logged out successfully.");
+		model.setViewName("index");
+		return model;
 	}
 	
 	@RequestMapping(value="/admin/addTech")

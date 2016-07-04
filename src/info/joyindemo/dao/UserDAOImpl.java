@@ -77,4 +77,22 @@ public class UserDAOImpl implements UserDAO{
      
         });
     }
+    
+    public User getByToken(String token){
+    	String sql = "SELECT * FROM User WHERE token='"+token+"'"; 
+    	return jdbcTemplate.query(sql, new ResultSetExtractor<User>() {
+            @Override
+            public User extractData(ResultSet rs) throws SQLException,
+                    DataAccessException {
+                if (rs.next()) {
+                    User user = new User();
+                    user.setUserId(rs.getString("id"));
+                    user.setName(rs.getString("username"));
+                    return user;
+                }
+                return null;
+            }
+     
+        });
+    }
 }

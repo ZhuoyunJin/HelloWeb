@@ -33,7 +33,6 @@ public class MenuItemDAO implements IMenuItem {
 		String sql = "SELECT * FROM Menu";
 		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
 		for(Map<String, Object> map: list){
-			System.err.println(map);
 			MenuItem item = new MenuItem();
             item.setCaption(map.get("sub-menu").toString());
             item.setUrl(map.get("url").toString());

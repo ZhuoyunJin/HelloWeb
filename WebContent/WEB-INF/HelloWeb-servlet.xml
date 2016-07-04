@@ -28,11 +28,10 @@
 
 	<bean id="awsSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://52.38.183.106:3306/demo?autoReconnect=true" />
-		<property name="username" value="joyin" />
-		<property name="password" value="joyin" />
+		<property name="driverClassName" value="${aws.driverClassName}" />
+		<property name="url" value="${aws.url}" />
+		<property name="username" value="${aws.username}" />
+		<property name="password" value="${aws.password}" />
 	</bean>
 
 	<bean id="techDAOImpl" class="info.joyindemo.dao.TechDAOImpl">

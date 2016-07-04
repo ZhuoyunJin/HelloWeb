@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import info.joyindemo.dao.TechDAOImpl;
 import info.joyindemo.entity.Technician;
@@ -18,6 +20,14 @@ public class CommonController {
 	
 	@Autowired
 	private TechDAOImpl techDAOImpl;
+	
+	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+	public ModelAndView welcomePage() {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("index");
+		return model;
+
+	}
 	
 	@RequestMapping(path="allTech")
 	public String login(ModelMap model) {
